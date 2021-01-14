@@ -40,10 +40,10 @@ const LandingPage = () => {
       fetchProfiles();
     }, []);
       
-    const fetchProfiles = async() => {
-      try{
-        const result = await axios.get('http://api.enye.tech/v1/challenge/records')
-        let allData = result.data
+    const fetchProfiles = () => {
+      axios.get('http://api.enye.tech/v1/challenge/records')
+      .then((response) => {
+        let allData = response.data
         allData = allData.records.profiles
         console.log(allData)
         setAllProfiles(allData)
@@ -53,10 +53,11 @@ const LandingPage = () => {
         setFilterMethod(allData)
         setIsLoading(false);
         setIsError(false)
-      } catch (e){
+      })
+      .catch(() => {
           setErrorMessage('Error while getting data, check your network connectivity and try again')
           setIsLoading(false)
-      }
+      });
     }
 
 
