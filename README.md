@@ -1,4 +1,4 @@
-#### ENYE Phase 1.1: Front-end
+##### ENYE Phase 1.1: Front-end
 
 This project demonstrated my understanding of working with JSON data with various RESTful APIs. In this challenge, a sample API with a single endpoint was provided and I wrote some Javascript to request data from the API and transform the response.
 

@@ -59,6 +59,7 @@ const LandingPage = () => {
       } catch (e){
           setErrorMessage('Error while getting data, check your network connectivity and try again')
           setIsLoading(false)
+          alert('Error while getting data, check your network connectivity and try again')
       }
     }
 
