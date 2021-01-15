@@ -6,6 +6,8 @@ import { List, ListItem, makeStyles, Divider, Box, FormControl, MenuItem, Select
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from 'react-loader-spinner';
 import Pagination from '@material-ui/lab/Pagination';
+import MaleAvatar from 'assets/img/maleAvatar.png'
+import FemaleAvatar from 'assets/img/femaleAvatar.png'
    
 const useStyles = makeStyles(theme => ({
         root: {
@@ -33,7 +35,8 @@ const LandingPage = () => {
     const [globalMethod, setGlobalMethod] = useState("");
     const [filterMethod, setFilterMethod] = useState("");
     const [searchInput, setSearchInput] = useState("");
-    const [searchHint, setSearchHint] = useState("")
+    const [searchHint, setSearchHint] = useState("");
+
     var genderCopy = [];
     var pmCopy = [];
     useEffect(() => {
@@ -71,69 +74,64 @@ const LandingPage = () => {
       });
       setProfileDisplay(newData);
       setNoOfPages(Math.ceil(newData.length / itemsPerPage))
-      let count = document.getElementById('searchCount')
       if (searchInput !== ""){
         setSearchHint(`${newData.length} search result(s)`)
       }
     }
         
-        const classes = useStyles();
-        
-        const itemsPerPage = 20;
-        const [page, setPage] = React.useState(1);
+    const classes = useStyles();
+    
+    const itemsPerPage = 20;
+    const [page, setPage] = React.useState(1);
+    const handleChange = (event, value) => {
+      setPage(value);
+    };
       
-        const handleChange = (event, value) => {
-          setPage(value);
-        };
-      
+    const handleGenderChange = (event) => {
+      setGlobalMethod("");
+      setSearchInput("")
+      setGlobalGender(event.target.value);
+      let newGender = event.target.value
+      if (newGender == "All Gender"){
+        setProfileDisplay(allProfiles)
+        setFilterGender(allProfiles)
+        setFilterMethod(allProfiles)
+        setNoOfPages(Math.ceil(allProfiles.length / itemsPerPage))
+      }else {
+        let new_items = [];
+        new_items = allProfiles.filter(item =>
+          item.Gender == newGender
+        );
+        setProfileDisplay(new_items);
+        setNoOfPages(Math.ceil(new_items.length / itemsPerPage))
+        setFilterGender(new_items)
+        setFilterMethod(new_items)
+      }
+    }
 
-        const handleGenderChange = (event) => {
-          setGlobalMethod("");
-          setSearchInput("")
-          setGlobalGender(event.target.value);
-          let newGender = event.target.value
-         if (newGender == "All Gender"){
-              setProfileDisplay(allProfiles)
-              setFilterGender(allProfiles)
-              setFilterMethod(allProfiles)
-              setNoOfPages(Math.ceil(allProfiles.length / itemsPerPage))
-        }else {
-            let new_items = [];
-            new_items = allProfiles.filter(item =>
-              item.Gender == newGender
-            );
-            setProfileDisplay(new_items);
-            setNoOfPages(Math.ceil(new_items.length / itemsPerPage))
-            setFilterGender(new_items)
-            setFilterMethod(new_items)
-            //setDisplayItems(new_items);
-          }
-        }
+    const handlePaymentChange = (event) => {
+      setSearchInput("")
+      setGlobalMethod(event.target.value);
+      let newMethod = event.target.value
+      if (newMethod == "All Method"){
+        setProfileDisplay(filterGender)
+        setNoOfPages(Math.ceil(filterGender.length / itemsPerPage))
+        setFilterMethod(filterGender)
+      }else {
+        let new_items = [];
+        new_items = filterGender.filter(item =>
+          item.PaymentMethod == newMethod
+        );
+        setProfileDisplay(new_items);
+        setNoOfPages(Math.ceil(new_items.length / itemsPerPage))
+        setFilterMethod(new_items)
+      }
+    }
 
-        const handlePaymentChange = (event) => {
-          setSearchInput("")
-          setGlobalMethod(event.target.value);
-          let newMethod = event.target.value
-         if (newMethod == "All Method"){
-              setProfileDisplay(filterGender)
-              setNoOfPages(Math.ceil(filterGender.length / itemsPerPage))
-              setFilterMethod(filterGender)
-        }else {
-            let new_items = [];
-            new_items = filterGender.filter(item =>
-              item.PaymentMethod == newMethod
-            );
-            setProfileDisplay(new_items);
-            setNoOfPages(Math.ceil(new_items.length / itemsPerPage))
-            setFilterMethod(new_items)
-            //setDisplayItems(new_items);
-          }
-        }
-
-        return (
-          <div>
-            <Header />
-              <br/>
+    return (
+        <div>
+          <Header />
+            <br/>
               <div class="page-container row">
                 <div className="col-12 col-md-2 filters">
                   <List>
@@ -225,9 +223,9 @@ const LandingPage = () => {
                                       <div class="card-body">
                                         <div class="user-image">
                                           {jobItem.Gender == "Male"? (
-                                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" class="img-radius" alt="User-Profile-Image" />
+                                            <img src={MaleAvatar} class="img-radius" alt="User-Profile-Image" />
                                           ) : (
-                                            <img src="https://bootdey.com/img/Content/avatar/avatar5.png" class="img-radius" alt="User-Profile-Image" />
+                                            <img src={FemaleAvatar} class="img-radius" alt="User-Profile-Image" />
                                           )}
                                         </div>
                                         <h6 class="f-w-600 m-t-25 m-b-10">{jobItem.FirstName} {jobItem.LastName}({jobItem.UserName})</h6>

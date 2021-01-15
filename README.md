@@ -1,70 +1,56 @@
-# Getting Started with Create React App
+#### ENYE Phase 1.1: Front-end
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project demonstrated my understanding of working with JSON data with various RESTful APIs. In this challenge, a sample API with a single endpoint was provided and I wrote some Javascript to request data from the API and transform the response.
 
-## Available Scripts
+### Records API
 
-In the project directory, you can run:
+The provided API below returns a list of profiles with information surrounding e-commerce transaction details.
 
-### `yarn start`
+```bash
+https://api.enye.tech/v1/challenge/records
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+API response schema
 
-### `yarn test`
+```json
+{
+    "records": {
+        "profiles": [{
+            "FirstName": "",
+            "LastName": "",
+            "Gender": "",
+            "Latitude": "",
+            "Longitude": "",
+            "CreditCardNumber": "",
+            "CreditCardType": "",
+            "Email": "",
+            "DomainName": "",
+            "PhoneNumber": "",
+            "MacAddress": "",
+            "URL": "",
+            "UserName": "",
+            "LastLogin": "",
+            "PaymentMethod": ""
+        }, ...]
+    },
+    "status": "",
+    "size": ""
+}
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Required Technology
 
-### `yarn build`
+- [React JS](https://reactjs.org/tutorial/tutorial.html)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Tasks Completed
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Using the Profiles API, I created a UI that presents the information intuitively and beautifully
+2. Only 20 profiles are listed on a page using Pagination
+3. My application incorporates two (2) filters to dynamically present the information (filter by gender, payment method)
+4. My application include a search bar to search for a specific account in the records
+5. My application front-end was written using ReactJS
+6. The application was deployed successfully to the web using Netlify - **https://enye-collins.netlify.app**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+End-users were kept in mind by making the front-end design usable, accessible, intuitive, beautiful and yet simple.

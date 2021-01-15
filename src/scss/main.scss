@@ -6,11 +6,6 @@ $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
 @import '~@fortawesome/fontawesome-free/scss/brands';
 
 @import './partials/header';
-@import './partials/home';
-@import './partials/about';
-@import './partials/services';
-@import './partials/facts';
-@import './partials/blog';
 @import './partials/footer';
 
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
@@ -72,7 +67,6 @@ body {
 .listing{
   padding: 1px;
   margin: 1px;
-  border: #3B5997 1px solid;
 }
 
 .article-search{
